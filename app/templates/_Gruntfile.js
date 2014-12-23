@@ -58,7 +58,7 @@ module.exports = function(grunt) {
           js: {
             src: ['bower_components/jquery/dist/jquery.min.js', 
                   'bower_components/jquery.html5loader/src/jquery.html5loader.min.js', 
-                  'bower_components/mondernizr/mondernizr-min.js', 
+                  'bower_components/modernizr/modernizr-min.js', 
                   'bower_components/velocity/jquery.velocity.min.js', 
                   'bower_components/velocity/velocity.ui.min.js', 
                   'bower_components/webfont/js/index.js'],
@@ -86,7 +86,7 @@ module.exports = function(grunt) {
           },
           all: {
             files: {
-              'bower_components/mondernizr/mondernizr-min.js': ['bower_components/mondernizr/mondernizr.js']
+              'bower_components/modernizr/modernizr-min.js': ['bower_components/modernizr/modernizr.js']
             }
           }
         },
