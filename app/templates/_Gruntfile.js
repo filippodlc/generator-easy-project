@@ -21,7 +21,8 @@ module.exports = function(grunt) {
         sass: {                              
           dist: {                            
             options: {                       
-              style: 'compressed'
+              style: 'compressed',
+              banner: '<%= meta.banner %>'
             },
             files: {                         
               '<%= config.assets %>css/style.css': '<%= config.assets %>sass/style.scss'
@@ -112,6 +113,7 @@ module.exports = function(grunt) {
     
     /*LOAD TASK */
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
