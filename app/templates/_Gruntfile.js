@@ -4,6 +4,9 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         meta: {
+        config: {
+            assets: 'www/assets/'
+        },
           banner: ' // INFO Document                                            \n' +
                   ' // AUTORE ------ Colombo 3000                               \n' +
                   ' // SITO: ------- www.colombo3000.com                        \n' +
@@ -15,19 +18,33 @@ module.exports = function(grunt) {
                   ' // FRAMEWORK --- <%= pkg.framework %>                       \n' +
                   ' // INFO Document                                            \n'
         },
+        sass: {                              
+          dist: {                            
+            options: {                       
+              style: 'compressed'
+            },
+            files: {                         
+              '<%= config.assets %>css/style.css': '<%= config.assets %>sass/style.scss'
+            }
+          }
+        },
         cssmin: {
           add_banner: {
             options: {
               banner: '<%= meta.banner %>'
             },
             files: {
-              'css/style-min.css': ['css/reset.css', 'css/unsemantic.css', 'css/font-awesome.min.css', 'css/magnific-popup.css', 'css/style.css']
+              '<%= config.assets %>css/style-min.css': ['<%= config.assets %>css/reset.css', 
+                                                        '<%= config.assets %>css/unsemantic.css', 
+                                                        '<%= config.assets %>css/font-awesome.min.css', 
+                                                        '<%= config.assets %>css/magnific-popup.css', 
+                                                        '<%= config.assets %>css/style.css']
             }
           }
         },
         watch: {
           scripts: {
-            files: ['css/*.css', 'js/*.js'],
+            files: ['<%= config.assets %>sass/*.scss', '<%= config.assets %>js/*.js'],
             tasks: ['dev'],
             options: {
               spawn: false
@@ -39,17 +56,22 @@ module.exports = function(grunt) {
             separator: ';',
           },
           js: {
-            src: ['js/jquery.min.js', 'js/jquery.html5Loader.min.js', 'js/modernizr.js', 'js/jquery-inview-min.js', 'js/jquery.velocity.min.js', 'js/velocity-ui-min.js', 'js/jquery.magnific-popup.min.js', 'js/webfont-min.js'],
-            dest: 'js/vendor-min.js',
+            src: ['bower_components/jquery/dist/jquery.min.js', 
+                  'bower_components/jquery.html5loader/src/jquery.html5loader.min.js', 
+                  'bower_components/mondernizr/mondernizr-min.js', 
+                  'bower_components/velocity/jquery.velocity.min.js', 
+                  'bower_components/velocity/velocity.ui.min.js', 
+                  'bower_components/webfont/js/index.js'],
+            dest: '<%= config.assets %>js/vendor.js',
           }
         },
         imagemin: {                          
           dynamic: {                         
             files: [{
               expand: true,                  
-              cwd: 'img/',                   
+              cwd: '<%= config.assets %>img/',                   
               src: ['**/*.{png,jpg,gif}'],   
-              dest: 'img/'
+              dest: '<%= config.assets %>img/'
             }]
           }
         },
@@ -59,26 +81,28 @@ module.exports = function(grunt) {
               banner: '<%= meta.banner %>'
             },
             files: {
-              'js/app-min.js': ['js/app.js']
+              '<%= config.assets %>js/app-min.js': ['<%= config.assets %>js/app.js']
             }
           },
           all: {
             files: {
-              'js/cookie-min.js': ['js/cookie.js'],
-              'js/jquery-inview-min.js': ['js/jquery.inview.js'],
-              'js/velocity-ui-min.js': ['js/velocity.ui.min.js'],
-              'js/webfont-min.js': ['js/webfont-1-5-6.js']
+              'bower_components/mondernizr/mondernizr-min.js': ['bower_components/mondernizr/mondernizr.js']
             }
           }
         },
        browserSync: {
           dev: {
               bsFiles: {
-                  src : ['css/*.css','**/*.php', 'js/*.js' ]
+                  src : [ '<%= config.assets %>css/*.css',
+                          '<%= config.assets %>js/*.js', 
+                          '<%= config.assets %>**/*.php', 
+                          '<%= config.assets %>**/*.htm', 
+                          '<%= config.assets %>**/*.html',
+                          '!admin/*' ]
               },
               options: {
-                 port: 50000,
-                 proxy: "http://199.6.54.10/GRAFICA/metalpress_2014/ita/",
+                 port: 12345, //PROXY PORT
+                 proxy: "", //PROXY LINK
                  watchTask: true
               }
           }
@@ -91,107 +115,13 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-browser-sync');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
+    grunt.loadNpmTasks('grunt-browser-sync');
 
     /*CONFIGURAZIONE TASK*/
     grunt.registerTask('image', ['imagemin']);
-    grunt.registerTask('dev', ['cssmin', 'uglify:app']);
-    grunt.registerTask('start', ['concat:js', 'uglify:all']);
+    grunt.registerTask('dev', ['sass', 'uglify:app']);
+    grunt.registerTask('start', ['uglify:all', 'concat:js']);
     grunt.registerTask('default', ['browserSync', 'watch']);
  
-};
-
-
-module.exports = function (grunt) {
-    // Project configuration.
-    grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
-
-        uglify: {
-            build: {
-                files: {
-                    
-                }
-            }
-        },
-        compass: {
-            dev: {
-                options: {
-                    sassDir: 'sass',
-                    cssDir: 'css',
-                    imagesDir: 'images',
-                    environment: 'development',
-                    httpGeneratedImagesPath: 'images'
-                }
-            },
-            live: {
-                options: {
-                    sassDir: 'sass',
-                    cssDir: 'css',
-                    imagesDir: 'images',
-                    environment: 'production',
-                    httpGeneratedImagesPath: 'images'
-                }
-            }
-        },
-
-        watch: {
-            jshint: {
-                files: ['scripts/main.js'],
-                tasks: ['jshint']
-            },
-            compass: {
-                files: ['sass/{,*/}*{,*/}*{,*/}*.{scss,sass}'],
-                tasks: ['compass:dev', 'notify:compass'],
-                options: {
-                    livereload: true,
-                }
-            }
-        },
-
-        jshint: {
-            all: ['scripts/main.js']
-        },
-
-        clean: {
-            // Clean any pre-commit hooks in .git/hooks directory
-            precommit: ['.git/hooks/pre-commit'],
-            pull: ['.git/hooks/post-merge']
-        },
-
-        shell: {
-            precommit: {
-                command: 'cp git-hooks/pre-commit .git/hooks/'
-            },
-            pull: {
-                command: 'cp git-hooks/post-merge .git/hooks/'
-            }
-        },
-
-        notify: {
-            compass: {
-              options: {
-                message: 'Compass compiled', //required
-              }
-            }
-        }
-
-
-    });
-
-
-    // Required task(s)
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-compass');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-shell');
-    grunt.loadNpmTasks('grunt-notify');
-
-    // Default task(s)
-    grunt.registerTask('default', ['compass:dev']);
-    grunt.registerTask('setup', ['clean:precommit','shell:precommit','clean:pull','shell:pull']);
-    grunt.registerTask('live', ['jshint', 'uglify', 'compass:live']);
 };
