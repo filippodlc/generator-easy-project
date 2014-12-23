@@ -4,11 +4,11 @@
   "description": "Yeoman generator",
   "license": "MIT",
   "main": "project/index.js",
-  "repository": "jonathan-fielding/generator-easy-webapp",
+  "repository": "filippodlc/generator-easy-project-master",
   "author": {
     "name": "Filippo Dolci",
     "email": "",
-    "url": "https://github.com/jonathan-fielding"
+    "url": "https://github.com/filippodlc"
   },
   "engines": {
     "node": ">=0.10.0"
