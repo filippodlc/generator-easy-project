@@ -4,12 +4,11 @@
   "description": "Yeoman generator",
   "license": "MIT",
   "main": "project/index.js",
-  "repository": "filippodlc/generator-easy-project-master",
-  "author": {
-    "name": "Filippo Dolci",
-    "email": "",
-    "url": "https://github.com/filippodlc"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/filippodlc/generator-easy-project"
   },
+  "author": "Filippo Dolci (https://github.com/filippodlc)",
   "engines": {
     "node": ">=0.10.0"
   },
@@ -32,5 +31,12 @@
   },
   "peerDependencies": {
     "yo": ">=1.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/filippodlc/generator-easy-project/issues"
+  },
+  "homepage": "https://github.com/filippodlc/generator-easy-project",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
