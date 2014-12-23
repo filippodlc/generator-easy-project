@@ -3,10 +3,10 @@ module.exports = function(grunt) {
     // Configurazione del progetto.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        meta: {
         config: {
             assets: 'www/assets/'
         },
+        meta: {
           banner: ' // INFO Document                                            \n' +
                   ' // AUTORE ------ Colombo 3000                               \n' +
                   ' // SITO: ------- www.colombo3000.com                        \n' +
