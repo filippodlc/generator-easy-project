@@ -39,12 +39,13 @@ var EasyProjectGenerator = yeoman.generators.Base.extend({
     }];
 
     this.prompt(prompts, function(answers) {
+      
       this.framework = answers.framework;
-      //this.includeUnsemantic = answers.framework;
 
       console.log(this.includeBootstrap);
 
       done();
+      
     }.bind(this));
   },
   app: function () {
@@ -53,8 +54,8 @@ var EasyProjectGenerator = yeoman.generators.Base.extend({
     this.mkdir('www/assets/sass');
     this.mkdir('www/assets/sass/_partials');
     this.mkdir('www/assets/font');
-    this.mkdir('www/assets/ita');
-    this.mkdir('www/assets/ita/include');
+    this.mkdir('www/ita');
+    this.mkdir('www/ita/include');
     this.mkdir('www/assets/js');
     this.mkdir('www/assets/img');
     this.mkdir('www/assets/icon');
@@ -65,6 +66,7 @@ var EasyProjectGenerator = yeoman.generators.Base.extend({
 
     //Copy basic HTML file
     this.copy('index.php', 'www/ita/index.php');
+    this.copy('sass/style.scss', 'www/assets/sass/style.scss');
 
 
     if(this.framework === 'Bootstrap'){
