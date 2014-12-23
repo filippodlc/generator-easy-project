@@ -24,7 +24,7 @@ var EasyProjectGenerator = yeoman.generators.Base.extend({
     this.log(this.yeoman);
 
     // replace it with a short and sweet description of your generator
-    this.log(chalk.magenta('You\'re using the fantastic BasicWebapp generator.'));
+    this.log(chalk.magenta('You\'re using the fantastic Web Project generator.'));
 
     var prompts = [{
       type: 'confirm',
