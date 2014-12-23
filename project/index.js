@@ -58,8 +58,6 @@ var EasyProjectGenerator = yeoman.generators.Base.extend({
     //Copy basic HTML file
     this.copy('index.html', 'index.html');
 
-    //Copy basic JS file
-    this.copy('scripts/main.js', 'scripts/main.js');
 
     //Copy core SASS files
     this.copy('sass/_partials/_variables.scss', 'sass/_partials/_variables.scss');
