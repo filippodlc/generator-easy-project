@@ -16,31 +16,6 @@ var EasyProjectGenerator = yeoman.generators.Base.extend({
     });
   },
 
-  askFor: function () {
-    var done = this.async();
-
-    // have Yeoman greet the user
-    this.log(this.yeoman);
-
-    // replace it with a short and sweet description of your generator
-    this.log(chalk.magenta('You\'re using the fantastic Web Project generator.'));
-
-    var prompts = [{
-      type: 'confirm',
-      name: 'bootstrap',
-      message: 'Would you like to use SASS Bootstrap?',
-      default: true
-    }];
-
-    this.prompt(prompts, function (props) {
-      var newPrompts = [];
-
-      this.bootstrap = props.bootstrap;
-
-
-    }.bind(this));
-  },
-
   app: function () {
     this.mkdir('dev');
     this.mkdir('dev/assets');
@@ -62,10 +37,8 @@ var EasyProjectGenerator = yeoman.generators.Base.extend({
     this.copy('sass/_partials/_variables.scss', 'sass/_partials/_variables.scss');
     this.copy('sass/_partials/_typography.scss', 'sass/_partials/_typography.scss');
 
-    if(this.bootstrap){
-      this.copy('_bower_bootstrap.json','../bower.json');
-      this.copy('sass/bootstrap.scss', 'sass/main.scss');
-    }
+    this.copy('_bower_bootstrap.json','../bower.json');
+    this.copy('sass/bootstrap.scss', 'sass/main.scss');
     
   },
 
