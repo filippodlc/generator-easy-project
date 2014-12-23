@@ -66,6 +66,7 @@ var EasyProjectGenerator = yeoman.generators.Base.extend({
 
     //Copy basic HTML file
     this.copy('index.php', 'www/ita/index.php');
+    this.copy('app.js', 'www/assets/js/app.js');
     this.copy('sass/style.scss', 'www/assets/sass/style.scss');
 
 
