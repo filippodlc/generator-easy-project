@@ -4,7 +4,6 @@ var path = require('path');
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var util=require('util');
-var exec=require('child_process').exec;
 
 var EasyProjectGenerator = yeoman.generators.Base.extend({
   init: function () {
