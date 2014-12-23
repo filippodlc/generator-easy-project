@@ -1,0 +1,123 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'publish',
+1 verbose cli   './',
+1 verbose cli   '--tag',
+1 verbose cli   'beta' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.33
+4 verbose node symlink C:\Program Files\nodejs\\node.exe
+5 verbose publish [ './' ]
+6 verbose cache add [ './', null ]
+7 verbose cache add name=undefined spec="./" args=["./",null]
+8 verbose parsed url { protocol: null,
+8 verbose parsed url   slashes: null,
+8 verbose parsed url   auth: null,
+8 verbose parsed url   host: null,
+8 verbose parsed url   port: null,
+8 verbose parsed url   hostname: null,
+8 verbose parsed url   hash: null,
+8 verbose parsed url   search: null,
+8 verbose parsed url   query: null,
+8 verbose parsed url   pathname: './',
+8 verbose parsed url   path: './',
+8 verbose parsed url   href: './' }
+9 silly lockFile 0ee6c175- ./
+10 verbose lock ./ C:\Users\colombo3000\AppData\Roaming\npm-cache\0ee6c175-.lock
+11 verbose tar pack [ 'C:\\Users\\colombo3000\\AppData\\Roaming\\npm-cache\\generator-easy-project\\1.0.0\\package.tgz',
+11 verbose tar pack   './' ]
+12 verbose tarball C:\Users\colombo3000\AppData\Roaming\npm-cache\generator-easy-project\1.0.0\package.tgz
+13 verbose folder ./
+14 info prepublish generator-easy-project@1.0.0
+15 silly lockFile 04cb2bca-tar tar://./
+16 verbose lock tar://./ C:\Users\colombo3000\AppData\Roaming\npm-cache\04cb2bca-tar.lock
+17 silly lockFile e9152e3d-r-easy-project-1-0-0-package-tgz tar://C:\Users\colombo3000\AppData\Roaming\npm-cache\generator-easy-project\1.0.0\package.tgz
+18 verbose lock tar://C:\Users\colombo3000\AppData\Roaming\npm-cache\generator-easy-project\1.0.0\package.tgz C:\Users\colombo3000\AppData\Roaming\npm-cache\e9152e3d-r-easy-project-1-0-0-package-tgz.lock
+19 silly lockFile 04cb2bca-tar tar://./
+20 silly lockFile 04cb2bca-tar tar://./
+21 silly lockFile e9152e3d-r-easy-project-1-0-0-package-tgz tar://C:\Users\colombo3000\AppData\Roaming\npm-cache\generator-easy-project\1.0.0\package.tgz
+22 silly lockFile e9152e3d-r-easy-project-1-0-0-package-tgz tar://C:\Users\colombo3000\AppData\Roaming\npm-cache\generator-easy-project\1.0.0\package.tgz
+23 silly lockFile 9a32c78c-rator-easy-project-1-0-0-package C:\Users\colombo3000\AppData\Roaming\npm-cache\generator-easy-project\1.0.0\package
+24 verbose lock C:\Users\colombo3000\AppData\Roaming\npm-cache\generator-easy-project\1.0.0\package C:\Users\colombo3000\AppData\Roaming\npm-cache\9a32c78c-rator-easy-project-1-0-0-package.lock
+25 silly lockFile 9a32c78c-rator-easy-project-1-0-0-package C:\Users\colombo3000\AppData\Roaming\npm-cache\generator-easy-project\1.0.0\package
+26 silly lockFile 9a32c78c-rator-easy-project-1-0-0-package C:\Users\colombo3000\AppData\Roaming\npm-cache\generator-easy-project\1.0.0\package
+27 silly lockFile 0ee6c175- ./
+28 silly lockFile 0ee6c175- ./
+29 silly publish { name: 'generator-easy-project',
+29 silly publish   version: '1.0.0',
+29 silly publish   description: 'Yeoman generator',
+29 silly publish   license: 'MIT',
+29 silly publish   main: 'app/index.js',
+29 silly publish   repository:
+29 silly publish    { type: 'git',
+29 silly publish      url: 'https://github.com/filippodlc/generator-easy-project' },
+29 silly publish   author: { name: 'Filippo Dolci', url: 'https://github.com/filippodlc' },
+29 silly publish   engines: { node: '>=0.10.0' },
+29 silly publish   files: [ 'app' ],
+29 silly publish   keywords:
+29 silly publish    [ 'yeoman-generator',
+29 silly publish      'web',
+29 silly publish      'front-end',
+29 silly publish      'h5bp',
+29 silly publish      'modernizr',
+29 silly publish      'jquery',
+29 silly publish      'grunt' ],
+29 silly publish   dependencies: { 'yeoman-generator': '~0.16.0' },
+29 silly publish   peerDependencies: { yo: '>=1.0.0' },
+29 silly publish   bugs: { url: 'https://github.com/filippodlc/generator-easy-project/issues' },
+29 silly publish   homepage: 'https://github.com/filippodlc/generator-easy-project',
+29 silly publish   scripts: { test: 'echo "Error: no test specified" && exit 1' },
+29 silly publish   readme: '# generator-easy-project\n\nThe Easy project generator is a very simple Yeoman project generator that forgoes having a lot of the additional structure that comes with a lot of Yeoman generators and simply builds you a very basic project setup.\n\n## Getting Started\n\n### What is Yeoman?\n\n> [Yeoman](http://yeoman.io) generator\n\nTrick question. It\'s not a thing. It\'s this guy:\n\n![](http://i.imgur.com/JHaAlBJ.png)\n\nBasically, he wears a top hat, lives in your computer, and waits for you to tell him what kind of application you wish to create.\n\nNot every new computer comes with a Yeoman pre-installed. He lives in the [npm](https://npmjs.org) package repository. You only have to ask for him once, then he packs up and moves into your hard drive. *Make sure you clean up, he likes new and shiny things.*\n\n```\n$ npm install -g yo\n```\n\n### Yeoman Generators\n\nYeoman travels light. He didn\'t pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.\n\nTo install generator-easy-project from npm, run:\n\n```\n$ npm install -g generator-easy-project\n```\n\nFinally, initiate the generator:\n\n```\n$ yo easy-project\n```\n\n## License\n\nMIT\n',
+29 silly publish   readmeFilename: 'README.md',
+29 silly publish   gitHead: '8bb8793586b1624eac7f81a5113e556da9ba1ad9',
+29 silly publish   _id: 'generator-easy-project@1.0.0',
+29 silly publish   _shasum: '84d6a4768d1823d6160c894994e7adde5442d8f2',
+29 silly publish   _from: './' }
+30 verbose request where is /generator-easy-project
+31 verbose request registry https://registry.npmjs.org/
+32 verbose request id 4028f717f3aa0f04
+33 verbose url raw /generator-easy-project
+34 verbose url resolving [ 'https://registry.npmjs.org/', './generator-easy-project' ]
+35 verbose url resolved https://registry.npmjs.org/generator-easy-project
+36 verbose request where is https://registry.npmjs.org/generator-easy-project
+37 info trying registry request attempt 1 at 12:05:03
+38 http PUT https://registry.npmjs.org/generator-easy-project
+39 http 403 https://registry.npmjs.org/generator-easy-project
+40 verbose headers { date: 'Tue, 23 Dec 2014 11:05:05 GMT',
+40 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+40 verbose headers   'content-type': 'application/json',
+40 verbose headers   'cache-control': 'max-age=60',
+40 verbose headers   'content-length': '230',
+40 verbose headers   'accept-ranges': 'bytes',
+40 verbose headers   via: '1.1 varnish',
+40 verbose headers   'x-served-by': 'cache-lhr6325-LHR',
+40 verbose headers   'x-cache': 'MISS',
+40 verbose headers   'x-cache-hits': '0',
+40 verbose headers   'x-timer': 'S1419332704.663828,VS0,VE587',
+40 verbose headers   'keep-alive': 'timeout=10, max=50',
+40 verbose headers   connection: 'Keep-Alive' }
+41 error publish Failed PUT 403
+42 error Error: forbidden Attempting to modify version 1.0.0,
+42 error which was previously published on 2014-12-23T09:20:55.365Z.
+42 error This is forbidden, to maintain package integrity.
+42 error Please update the version number and try again.: generator-easy-project
+42 error     at RegClient.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:308:14)
+42 error     at Request._callback (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:246:65)
+42 error     at Request.self.callback (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:236:22)
+42 error     at Request.emit (events.js:98:17)
+42 error     at Request.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:1142:14)
+42 error     at Request.emit (events.js:117:20)
+42 error     at IncomingMessage.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:1096:12)
+42 error     at IncomingMessage.emit (events.js:117:20)
+42 error     at _stream_readable.js:943:16
+42 error     at process._tickCallback (node.js:419:13)
+43 error If you need help, you may report this *entire* log,
+43 error including the npm and node versions, at:
+43 error     <http://github.com/npm/npm/issues>
+44 error System Windows_NT 6.1.7601
+45 error command "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "publish" "./" "--tag" "beta"
+46 error cwd C:\Users\colombo3000\Desktop\generator-easy-project-master
+47 error node -v v0.10.33
+48 error npm -v 1.4.28
+49 verbose exit [ 1, true ]
