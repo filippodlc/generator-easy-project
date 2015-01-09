@@ -62,15 +62,15 @@ var EasyProjectGenerator = yeoman.generators.Base.extend({
     this.mkdir('dev/assets/__img');
     this.mkdir('dev/assets/icon');
 
-    this.copy('.htaccess', '.htaccess');
-    this.copy('_package.json', 'package.json');
-    this.copy('_Gruntfile.js', 'Gruntfile.js');
+    this.copy('_package.json',    'package.json');
+    this.copy('_Gruntfile.js',    'Gruntfile.js');
 
 
     //Copy basic HTML file
-    this.copy('index.php', 'dev/ita/index.php');
-    this.copy('app.js', 'dev/assets/js/app.js');
-    this.copy('sass/style.scss', 'dev/assets/sass/style.scss');
+    this.copy('.htaccess',        'dev/.htaccess');
+    this.copy('index.php',        'dev/ita/index.php');
+    this.copy('app.js',           'dev/assets/js/app.js');
+    this.copy('sass/style.scss',  'dev/assets/sass/style.scss');
 
 
     if(this.framework === 'Bootstrap'){
