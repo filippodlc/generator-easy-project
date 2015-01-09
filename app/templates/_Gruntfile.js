@@ -4,7 +4,9 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         config: {
-            assets: 'dev/assets/',
+            dev: 'dev/',
+            pub: 'www/',
+            assets: 'assets/',
         },
         meta: {
           banner: ' // INFO Document                                            \n' +
@@ -25,13 +27,13 @@ module.exports = function(grunt) {
               banner: '<%= meta.banner %>'
             },
             files: {                         
-              '<%= config.assets %>css/style.css': '<%= config.assets %>sass/style.scss'
+              '<%= config.dev %><%= config.assets %>css/style.css': '<%= config.dev %><%= config.assets %>sass/style.scss'
             }
           }
         },
         watch: {
           scripts: {
-            files: ['<%= config.assets %>sass/*.scss', '<%= config.assets %>js/*.js'],
+            files: ['<%= config.dev %><%= config.assets %>sass/*.scss', '<%= config.dev %><%= config.assets %>js/*.js'],
             tasks: ['sass', 'uglify:app'],
             options: {
               spawn: false
@@ -44,21 +46,21 @@ module.exports = function(grunt) {
           },
           js: {
             src: ['bower_components/jquery/dist/jquery.min.js', 
-                  'bower_components/jquery.html5loader/src/jquery.html5loader.min.js', 
+                  //'bower_components/jquery.html5loader/src/jquery.html5loader.min.js', 
                   'bower_components/modernizr/modernizr-min.js', 
-                  'bower_components/velocity/jquery.velocity.min.js', 
+                  'bower_components/velocity/velocity.min.js', 
                   'bower_components/velocity/velocity.ui.min.js', 
                   'bower_components/webfont/js/index.js'],
-            dest: '<%= config.assets %>js/vendor.js',
+            dest: '<%= config.dev %><%= config.assets %>js/vendor.js',
           }
         },
         imagemin: {                          
           dynamic: {                         
             files: [{
               expand: true,                  
-              cwd: '<%= config.assets %>img/',                   
+              cwd: '<%= config.dev %><%= config.assets %>img/',                   
               src: ['**/*.{png,jpg,gif,svg}'],   
-              dest: '<%= config.assets %>__img/'
+              dest: '<%= config.dev %><%= config.assets %>__img/'
             }]
           }
         },
@@ -68,7 +70,7 @@ module.exports = function(grunt) {
               banner: '<%= meta.banner %>'
             },
             files: {
-              '<%= config.assets %>js/app-min.js': ['<%= config.assets %>js/app.js']
+              '<%= config.dev %><%= config.assets %>js/app-min.js': ['<%= config.dev %><%= config.assets %>js/app.js']
             }
           },
           all: {
@@ -79,26 +81,26 @@ module.exports = function(grunt) {
         },
         copy: {
             main: {
-              src: ['**', 'img/', '__img/'],
+              src: ['**','!**/<%= config.assets %>/img/**', '!**/<%= config.assets %>/__img/**', '!**/<%= config.assets %>/sass/**'],
               expand: true,
-              cwd: 'dev',
-              dest: 'pub'
+              cwd: '<%= config.dev %>',
+              dest: '<%= config.pub %>'
             },
             image:{
               src: ['**'],
               expand: true,
-              cwd: '__img',
-              dest: 'pub/img/'
+              cwd: '<%= config.dev %><%= config.assets %>__img',
+              dest: '<%= config.pub %><%= config.assets %>img/'
             }
         },
        browserSync: {
           dev: {
               bsFiles: {
-                  src : [ '<%= config.assets %>css/*.css',
-                          '<%= config.assets %>js/*.js', 
-                          '<%= config.assets %>**/*.php', 
-                          '<%= config.assets %>**/*.htm', 
-                          '<%= config.assets %>**/*.html',
+                  src : [ '<%= config.dev %><%= config.assets %>css/*.css',
+                          '<%= config.dev %><%= config.assets %>js/*.js', 
+                          '<%= config.dev %><%= config.assets %>**/*.php', 
+                          '<%= config.dev %><%= config.assets %>**/*.htm', 
+                          '<%= config.dev %><%= config.assets %>**/*.html',
                           '!admin/*' ]
               },
               options: {

@@ -28,7 +28,7 @@ var EasyProjectGenerator = yeoman.generators.Base.extend({
     var prompts = [{
       type: 'list',
       name: 'framework',
-      message: 'Select framework for your project (jQuery + jQuery.html5loader + Modernizr + Velocity.js + webfontLoader)?',
+      message: 'Select framework for your project (jQuery + Modernizr + Velocity.js + webfontLoader)?',
       choices: [{
         name: 'Bootstrap',
         value: 'Bootstrap'
@@ -49,7 +49,7 @@ var EasyProjectGenerator = yeoman.generators.Base.extend({
     }.bind(this));
   },
   app: function () {
-    this.mkdir('pub/');
+    this.mkdir('www/');
     this.mkdir('dev/assets');
     this.mkdir('dev/assets/css');
     this.mkdir('dev/assets/sass');
@@ -62,6 +62,7 @@ var EasyProjectGenerator = yeoman.generators.Base.extend({
     this.mkdir('dev/assets/__img');
     this.mkdir('dev/assets/icon');
 
+    this.copy('.htaccess', '.htaccess');
     this.copy('_package.json', 'package.json');
     this.copy('_Gruntfile.js', 'Gruntfile.js');
 
