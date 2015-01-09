@@ -4,7 +4,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         config: {
-            assets: 'www/assets/'
+            assets: 'dev/assets/',
         },
         meta: {
           banner: ' // INFO Document                                            \n' +
@@ -29,24 +29,10 @@ module.exports = function(grunt) {
             }
           }
         },
-        cssmin: {
-          add_banner: {
-            options: {
-              banner: '<%= meta.banner %>'
-            },
-            files: {
-              '<%= config.assets %>css/style-min.css': ['<%= config.assets %>css/reset.css', 
-                                                        '<%= config.assets %>css/unsemantic.css', 
-                                                        '<%= config.assets %>css/font-awesome.min.css', 
-                                                        '<%= config.assets %>css/magnific-popup.css', 
-                                                        '<%= config.assets %>css/style.css']
-            }
-          }
-        },
         watch: {
           scripts: {
             files: ['<%= config.assets %>sass/*.scss', '<%= config.assets %>js/*.js'],
-            tasks: ['dev'],
+            tasks: ['sass', 'uglify:app'],
             options: {
               spawn: false
             }
@@ -71,8 +57,8 @@ module.exports = function(grunt) {
             files: [{
               expand: true,                  
               cwd: '<%= config.assets %>img/',                   
-              src: ['**/*.{png,jpg,gif}'],   
-              dest: '<%= config.assets %>img/'
+              src: ['**/*.{png,jpg,gif,svg}'],   
+              dest: '<%= config.assets %>__img/'
             }]
           }
         },
@@ -90,6 +76,20 @@ module.exports = function(grunt) {
               'bower_components/modernizr/modernizr-min.js': ['bower_components/modernizr/modernizr.js']
             }
           }
+        },
+        copy: {
+            main: {
+              src: ['**', 'img/', '__img/'],
+              expand: true,
+              cwd: 'dev',
+              dest: 'pub'
+            },
+            image:{
+              src: ['**'],
+              expand: true,
+              cwd: '__img',
+              dest: 'pub/img/'
+            }
         },
        browserSync: {
           dev: {
@@ -114,15 +114,14 @@ module.exports = function(grunt) {
     /*LOAD TASK */
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-sass');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-browser-sync');
 
     /*CONFIGURAZIONE TASK*/
-    grunt.registerTask('image', ['imagemin']);
-    grunt.registerTask('dev', ['sass', 'uglify:app']);
+    grunt.registerTask('pub', ['imagemin', 'copy:main', 'copy:image']);
     grunt.registerTask('start', ['uglify:all', 'concat:js']);
     grunt.registerTask('default', ['browserSync', 'watch']);
  
